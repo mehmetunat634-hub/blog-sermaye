@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import { User, MapPin, X, Heart } from 'lucide-react'
 import styles from '@/styles/Discover.module.css'
 
 interface User {
@@ -19,7 +20,7 @@ const mockUsers: User[] = [
     age: 28,
     bio: 'Love traveling, music, and meeting new people. Looking for genuine connections!',
     interests: ['Travel', 'Music', 'Photography', 'Cooking'],
-    avatar: '👩',
+    avatar: 'user1',
     distance: 5
   },
   {
@@ -28,7 +29,7 @@ const mockUsers: User[] = [
     age: 32,
     bio: 'Tech enthusiast and coffee lover. Lets chat and see where it goes!',
     interests: ['Technology', 'Coffee', 'Hiking', 'Gaming'],
-    avatar: '👨',
+    avatar: 'user2',
     distance: 8
   },
   {
@@ -37,7 +38,7 @@ const mockUsers: User[] = [
     age: 26,
     bio: 'Artist and yoga instructor. Peace, love, and positive vibes only ✌️',
     interests: ['Art', 'Yoga', 'Meditation', 'Nature'],
-    avatar: '👩‍🦰',
+    avatar: 'user3',
     distance: 3
   }
 ]
@@ -76,12 +77,12 @@ export default function Discover() {
         {currentUser && (
           <div className={styles.profileCard}>
             <div className={styles.profileHeader}>
-              <div className={styles.avatar}>{currentUser.avatar}</div>
+              <div className={styles.avatar}><User size={64} /></div>
               <div className={styles.profileInfo}>
                 <h1>
                   {currentUser.name}, {currentUser.age}
                 </h1>
-                <p className={styles.distance}>📍 {currentUser.distance} km away</p>
+                <p className={styles.distance}><MapPin size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> {currentUser.distance} km away</p>
               </div>
             </div>
 
@@ -105,10 +106,10 @@ export default function Discover() {
 
             <div className={styles.actions}>
               <button onClick={handlePass} className={styles.passBtn}>
-                ❌ Pass
+                <X size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Pass
               </button>
               <button onClick={handleLike} className={styles.likeBtn}>
-                💝 Like
+                <Heart size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Like
               </button>
             </div>
           </div>

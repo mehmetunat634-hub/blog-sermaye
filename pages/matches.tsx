@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { User, MessageCircle, Video, HeartCrack } from 'lucide-react'
 import styles from '@/styles/Matches.module.css'
 
 interface Match {
@@ -14,7 +15,7 @@ const mockMatches: Match[] = [
   {
     id: 1,
     name: 'Sarah',
-    avatar: '👩',
+    avatar: 'user1',
     lastMessage: 'Hey! How are you?',
     isOnline: true,
     matchedAt: '2 hours ago'
@@ -22,7 +23,7 @@ const mockMatches: Match[] = [
   {
     id: 2,
     name: 'Emma',
-    avatar: '👩‍🦰',
+    avatar: 'user2',
     lastMessage: 'Thanks for the match! 😊',
     isOnline: true,
     matchedAt: '1 day ago'
@@ -30,7 +31,7 @@ const mockMatches: Match[] = [
   {
     id: 3,
     name: 'Lisa',
-    avatar: '👱‍♀️',
+    avatar: 'user3',
     lastMessage: 'Would love to chat sometime',
     isOnline: false,
     matchedAt: '3 days ago'
@@ -52,7 +53,7 @@ export default function Matches() {
             <div key={match.id} className={styles.matchCard}>
               <div className={styles.matchHeader}>
                 <div className={styles.avatarContainer}>
-                  <span className={styles.avatar}>{match.avatar}</span>
+                  <span className={styles.avatar}><User size={48} /></span>
                   {match.isOnline && <span className={styles.onlineDot}></span>}
                 </div>
                 <div className={styles.matchInfo}>
@@ -68,13 +69,13 @@ export default function Matches() {
                   href={`/chat/${match.id}`}
                   className={styles.chatBtn}
                 >
-                  💬 Chat
+                  <MessageCircle size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Chat
                 </Link>
                 <Link
                   href={`/video-call/${match.id}`}
                   className={styles.videoBtn}
                 >
-                  📹 Video Call
+                  <Video size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Video Call
                 </Link>
               </div>
             </div>
@@ -83,7 +84,7 @@ export default function Matches() {
 
         {mockMatches.length === 0 && (
           <div className={styles.emptyState}>
-            <p className={styles.emptyIcon}>💔</p>
+            <p className={styles.emptyIcon}><HeartCrack size={64} /></p>
             <h3>No matches yet</h3>
             <p>Start swiping to find your connections!</p>
             <Link href="/discover" className={styles.discoverBtn}>

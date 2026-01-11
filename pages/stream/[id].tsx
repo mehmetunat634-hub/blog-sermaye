@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { Video, Radio, Users, User, Check, Heart, Smile, ThumbsUp, Flame, PartyPopper } from 'lucide-react'
 import styles from '@/styles/WatchStream.module.css'
 
 interface ChatMessage {
@@ -58,22 +59,22 @@ export default function WatchStream() {
         <div className={styles.videoSection}>
           <div className={styles.videoContainer}>
             <div className={styles.videoPlaceholder}>
-              <span className={styles.videoIcon}>📹</span>
+              <span className={styles.videoIcon}><Video size={64} /></span>
               <p>Live Stream</p>
-              <span className={styles.liveBadge}>🔴 LIVE</span>
+              <span className={styles.liveBadge}><Radio size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> LIVE</span>
             </div>
 
             <div className={styles.streamOverlay}>
               <div className={styles.streamStats}>
-                <span className={styles.livePulse}>🔴 LIVE</span>
-                <span className={styles.viewerCount}>👥 {viewers} watching</span>
+                <span className={styles.livePulse}><Radio size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> LIVE</span>
+                <span className={styles.viewerCount}><Users size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> {viewers} watching</span>
               </div>
             </div>
           </div>
 
           <div className={styles.streamInfo}>
             <div className={styles.streamerInfo}>
-              <div className={styles.avatar}>👩</div>
+              <div className={styles.avatar}><User size={48} /></div>
               <div className={styles.details}>
                 <h2>Sarah_M</h2>
                 <p>Just chatting and meeting new people!</p>
@@ -85,27 +86,31 @@ export default function WatchStream() {
                 onClick={() => setIsFollowing(!isFollowing)}
                 className={isFollowing ? styles.followingBtn : styles.followBtn}
               >
-                {isFollowing ? '✓ Following' : '+ Follow'}
+                {isFollowing ? (
+                  <><Check size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Following</>
+                ) : (
+                  '+ Follow'
+                )}
               </button>
               <Link href="/discover" className={styles.matchBtn}>
-                💝 Match
+                <Heart size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Match
               </Link>
             </div>
           </div>
 
           <div className={styles.reactions}>
-            <button onClick={() => handleSendReaction('❤️')} className={styles.reactionBtn}>❤️</button>
-            <button onClick={() => handleSendReaction('😊')} className={styles.reactionBtn}>😊</button>
-            <button onClick={() => handleSendReaction('👍')} className={styles.reactionBtn}>👍</button>
-            <button onClick={() => handleSendReaction('🔥')} className={styles.reactionBtn}>🔥</button>
-            <button onClick={() => handleSendReaction('🎉')} className={styles.reactionBtn}>🎉</button>
+            <button onClick={() => handleSendReaction('❤️')} className={styles.reactionBtn}><Heart size={24} /></button>
+            <button onClick={() => handleSendReaction('😊')} className={styles.reactionBtn}><Smile size={24} /></button>
+            <button onClick={() => handleSendReaction('👍')} className={styles.reactionBtn}><ThumbsUp size={24} /></button>
+            <button onClick={() => handleSendReaction('🔥')} className={styles.reactionBtn}><Flame size={24} /></button>
+            <button onClick={() => handleSendReaction('🎉')} className={styles.reactionBtn}><PartyPopper size={24} /></button>
           </div>
         </div>
 
         <div className={styles.chatSection}>
           <div className={styles.chatHeader}>
             <h3>Live Chat</h3>
-            <span className={styles.chatViewers}>👥 {viewers}</span>
+            <span className={styles.chatViewers}><Users size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> {viewers}</span>
           </div>
 
           <div className={styles.chatMessages}>

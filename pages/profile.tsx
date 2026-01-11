@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import { User, Save, Pencil, Radio, Settings } from 'lucide-react'
 import styles from '@/styles/Profile.module.css'
 
 export default function Profile() {
@@ -8,7 +9,7 @@ export default function Profile() {
     age: 30,
     bio: 'Love meeting new people and having great conversations!',
     interests: ['Music', 'Travel', 'Photography', 'Food'],
-    avatar: '🧑'
+    avatar: 'user'
   })
 
   const [isEditing, setIsEditing] = useState(false)
@@ -22,14 +23,18 @@ export default function Profile() {
           onClick={() => setIsEditing(!isEditing)}
           className={styles.editBtn}
         >
-          {isEditing ? '💾 Save' : '✏️ Edit'}
+          {isEditing ? (
+            <><Save size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Save</>
+          ) : (
+            <><Pencil size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Edit</>
+          )}
         </button>
       </nav>
 
       <main className={styles.main}>
         <div className={styles.profileCard}>
           <div className={styles.avatarSection}>
-            <div className={styles.avatar}>{profile.avatar}</div>
+            <div className={styles.avatar}><User size={96} /></div>
             {isEditing && (
               <button className={styles.changeAvatarBtn}>Change Avatar</button>
             )}
@@ -102,10 +107,10 @@ export default function Profile() {
 
         <div className={styles.actionButtons}>
           <Link href="/go-live" className={styles.goLiveBtn}>
-            🔴 Go Live
+            <Radio size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Go Live
           </Link>
           <Link href="/settings" className={styles.settingsBtn}>
-            ⚙️ Settings
+            <Settings size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Settings
           </Link>
         </div>
       </main>

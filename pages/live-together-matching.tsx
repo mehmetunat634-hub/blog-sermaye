@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { User, Sparkles, AlertTriangle, X, Check } from 'lucide-react'
 import styles from '@/styles/LiveTogetherMatching.module.css'
 
 export default function LiveTogetherMatching() {
@@ -59,17 +60,17 @@ export default function LiveTogetherMatching() {
         ) : !bothAgreed ? (
           <div className={styles.confirmationScreen}>
             <div className={styles.matchFound}>
-              <h1>Match Found! 🎉</h1>
+              <h1>Match Found! <Sparkles size={28} style={{ display: 'inline', verticalAlign: 'middle' }} /></h1>
               <div className={styles.partnerPreview}>
-                <div className={styles.partnerAvatar}>👤</div>
+                <div className={styles.partnerAvatar}><User size={64} /></div>
                 <h2>Sarah, 28</h2>
                 <p>Ready to go live together</p>
               </div>
 
               <div className={styles.finalWarning}>
-                <h3>⚠️ Final Confirmation</h3>
+                <h3><AlertTriangle size={24} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} /> Final Confirmation</h3>
                 <p>
-                  By clicking "Go Live Together", you confirm that you want to start a
+                  By clicking &quot;Go Live Together&quot;, you confirm that you want to start a
                   <strong> PUBLIC live stream</strong> with this person.
                 </p>
                 <p>
@@ -80,10 +81,10 @@ export default function LiveTogetherMatching() {
               {!hasConfirmed ? (
                 <div className={styles.actions}>
                   <button onClick={handleDecline} className={styles.declineBtn}>
-                    ❌ No, Go Back
+                    <X size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> No, Go Back
                   </button>
                   <button onClick={handleConfirm} className={styles.confirmBtn}>
-                    ✅ Yes, Go Live Together
+                    <Check size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Yes, Go Live Together
                   </button>
                 </div>
               ) : !partnerConfirmed ? (
@@ -96,7 +97,7 @@ export default function LiveTogetherMatching() {
           </div>
         ) : (
           <div className={styles.startingScreen}>
-            <div className={styles.successIcon}>✅</div>
+            <div className={styles.successIcon}><Check size={64} /></div>
             <h2>Both Confirmed!</h2>
             <p>Starting your live stream together...</p>
             <div className={styles.spinner}></div>

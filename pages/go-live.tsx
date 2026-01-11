@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Video, AlertTriangle, Loader2, Radio } from 'lucide-react'
 import styles from '@/styles/GoLive.module.css'
 
 export default function GoLive() {
@@ -39,7 +40,7 @@ export default function GoLive() {
           <div className={styles.previewSection}>
             <div className={styles.videoPreview}>
               <div className={styles.cameraPlaceholder}>
-                📹
+                <Video size={64} />
                 <p>Camera Preview</p>
                 <small>Your video will appear here</small>
               </div>
@@ -86,7 +87,7 @@ export default function GoLive() {
             </div>
 
             <div className={styles.guidelines}>
-              <h4>⚠️ Community Guidelines</h4>
+              <h4><AlertTriangle size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Community Guidelines</h4>
               <ul>
                 <li>Be respectful to all viewers</li>
                 <li>No harassment or hate speech</li>
@@ -101,7 +102,11 @@ export default function GoLive() {
               disabled={isStarting || !streamTitle.trim()}
               className={styles.startBtn}
             >
-              {isStarting ? '🔄 Starting Stream...' : '🔴 Start Live Stream'}
+              {isStarting ? (
+                <><Loader2 size={20} className="spin" style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Starting Stream...</>
+              ) : (
+                <><Radio size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Start Live Stream</>
+              )}
             </button>
           </div>
         </div>

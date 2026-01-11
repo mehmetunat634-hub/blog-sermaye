@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { User, Radio, Users, Clock, Mic, Video, Square, Globe } from 'lucide-react'
 import styles from '@/styles/LiveTogetherStream.module.css'
 
 interface ChatMessage {
@@ -87,14 +88,14 @@ export default function LiveTogetherStream() {
           <div className={styles.splitView}>
             <div className={styles.videoPanel}>
               <div className={styles.videoPlaceholder}>
-                <span className={styles.avatar}>🧑</span>
+                <span className={styles.avatar}><User size={64} /></span>
                 <p>You</p>
               </div>
               <span className={styles.nameTag}>You</span>
             </div>
             <div className={styles.videoPanel}>
               <div className={styles.videoPlaceholder}>
-                <span className={styles.avatar}>👩</span>
+                <span className={styles.avatar}><User size={64} /></span>
                 <p>Sarah</p>
               </div>
               <span className={styles.nameTag}>Sarah</span>
@@ -103,24 +104,24 @@ export default function LiveTogetherStream() {
 
           <div className={styles.streamInfo}>
             <div className={styles.liveIndicator}>
-              <span className={styles.livePulse}>🔴 LIVE TOGETHER</span>
-              <span className={styles.publicBadge}>👥 PUBLIC STREAM</span>
+              <span className={styles.livePulse}><Radio size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> LIVE TOGETHER</span>
+              <span className={styles.publicBadge}><Users size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> PUBLIC STREAM</span>
             </div>
             <div className={styles.stats}>
-              <span>👥 {viewers} watching</span>
-              <span>⏱️ {formatDuration(duration)}</span>
+              <span><Users size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> {viewers} watching</span>
+              <span><Clock size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> {formatDuration(duration)}</span>
             </div>
           </div>
 
           <div className={styles.controls}>
             <button className={styles.controlBtn}>
-              🎤 Mute
+              <Mic size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Mute
             </button>
             <button className={styles.controlBtn}>
-              📹 Camera
+              <Video size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Camera
             </button>
             <button onClick={handleEndStream} className={styles.endBtn}>
-              ⏹️ End Stream
+              <Square size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> End Stream
             </button>
           </div>
         </div>
@@ -128,11 +129,11 @@ export default function LiveTogetherStream() {
         <div className={styles.chatSection}>
           <div className={styles.chatHeader}>
             <h3>Live Chat</h3>
-            <span className={styles.viewerCount}>👥 {viewers}</span>
+            <span className={styles.viewerCount}><Users size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> {viewers}</span>
           </div>
 
           <div className={styles.publicNotice}>
-            <p>🌐 This is a public stream - everyone can watch and chat</p>
+            <p><Globe size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> This is a public stream - everyone can watch and chat</p>
           </div>
 
           <div className={styles.chatMessages}>

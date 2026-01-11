@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Video, Radio, Users, Clock, Mic, Settings, Square } from 'lucide-react'
 import styles from '@/styles/Streaming.module.css'
 
 interface ChatMessage {
@@ -92,9 +93,9 @@ export default function Streaming() {
             <div className={styles.videoPlaceholder}>
               {isLive ? (
                 <>
-                  <span className={styles.cameraIcon}>📹</span>
+                  <span className={styles.cameraIcon}><Video size={64} /></span>
                   <p>Your Live Stream</p>
-                  <span className={styles.livePulse}>🔴 LIVE</span>
+                  <span className={styles.livePulse}><Radio size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> LIVE</span>
                 </>
               ) : (
                 <>
@@ -106,25 +107,25 @@ export default function Streaming() {
 
             <div className={styles.streamOverlay}>
               <div className={styles.streamStats}>
-                <span className={styles.liveBadge}>🔴 LIVE</span>
-                <span className={styles.viewerCount}>👥 {viewers}</span>
-                <span className={styles.duration}>⏱️ {formatDuration(duration)}</span>
+                <span className={styles.liveBadge}><Radio size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> LIVE</span>
+                <span className={styles.viewerCount}><Users size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> {viewers}</span>
+                <span className={styles.duration}><Clock size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> {formatDuration(duration)}</span>
               </div>
             </div>
           </div>
 
           <div className={styles.streamControls}>
             <button className={styles.controlBtn}>
-              🎤 Mute
+              <Mic size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Mute
             </button>
             <button className={styles.controlBtn}>
-              📹 Camera Off
+              <Video size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Camera Off
             </button>
             <button className={styles.controlBtn}>
-              ⚙️ Settings
+              <Settings size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Settings
             </button>
             <button onClick={handleEndStream} className={styles.endBtn}>
-              ⏹️ End Stream
+              <Square size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> End Stream
             </button>
           </div>
         </div>
@@ -132,7 +133,7 @@ export default function Streaming() {
         <div className={styles.chatSection}>
           <div className={styles.chatHeader}>
             <h3>Live Chat</h3>
-            <span className={styles.chatViewers}>👥 {viewers} viewers</span>
+            <span className={styles.chatViewers}><Users size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> {viewers} viewers</span>
           </div>
 
           <div className={styles.chatMessages}>

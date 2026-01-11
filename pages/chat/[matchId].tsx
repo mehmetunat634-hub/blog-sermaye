@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { User, Video } from 'lucide-react'
 import styles from '@/styles/Chat.module.css'
 
 interface Message {
@@ -59,7 +60,7 @@ export default function Chat() {
         </div>
         <div className={styles.navCenter}>
           <div className={styles.matchInfo}>
-            <span className={styles.avatar}>👩</span>
+            <span className={styles.avatar}><User size={40} /></span>
             <div>
               <h3>Sarah</h3>
               <span className={styles.onlineStatus}>🟢 Online</span>
@@ -68,7 +69,7 @@ export default function Chat() {
         </div>
         <div className={styles.navRight}>
           <Link href={`/video-call/${matchId}`} className={styles.videoCallBtn}>
-            📹 Video Call
+            <Video size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Video Call
           </Link>
         </div>
       </nav>

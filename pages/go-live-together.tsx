@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Radio, AlertTriangle } from 'lucide-react'
 import styles from '@/styles/GoLiveTogether.module.css'
 
 export default function GoLiveTogether() {
@@ -39,19 +40,19 @@ export default function GoLiveTogether() {
       <main className={styles.main}>
         <div className={styles.setupCard}>
           <div className={styles.header}>
-            <h1>🔴 Go Live Together & Match</h1>
+            <h1><Radio size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} /> Go Live Together & Match</h1>
             <p className={styles.subtitle}>
               Get matched with a random person and go live together publicly
             </p>
           </div>
 
           <div className={styles.warningBox}>
-            <h3>⚠️ Important - Read Before Continuing</h3>
+            <h3><AlertTriangle size={24} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} /> Important - Read Before Continuing</h3>
             <ul>
               <li>Your conversation will be <strong>broadcast publicly</strong> to all users</li>
               <li>Anyone on the platform can watch and interact</li>
               <li>Your video call will be <strong>live streamed in real-time</strong></li>
-              <li>You'll be matched with a random person who also chose this option</li>
+              <li>You&apos;ll be matched with a random person who also chose this option</li>
               <li>Both of you must agree to go live together</li>
               <li>The stream is live only - not recorded</li>
               <li>Follow community guidelines and be respectful</li>
@@ -111,7 +112,7 @@ export default function GoLiveTogether() {
                 disabled={!gender || !lookingFor || !hasAgreed}
                 className={styles.startBtn}
               >
-                🔴 Start Matching & Go Live Together
+                <Radio size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Start Matching & Go Live Together
               </button>
             </form>
           ) : (
