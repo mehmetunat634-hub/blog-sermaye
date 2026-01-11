@@ -105,8 +105,8 @@ blog-sermaye/
 
 - Node.js 18.x or higher
 - npm, yarn, or pnpm
-- PostgreSQL database (local or hosted)
 - SMTP email service (Gmail, SendGrid, etc.)
+- **Database**: SQLite (included by default, no setup needed) or PostgreSQL (optional, for production)
 
 ### Installation
 
@@ -127,7 +127,7 @@ cp .env.example .env
 ```
 
 Edit `.env` and configure:
-- `DATABASE_URL` - Your PostgreSQL connection string
+- `DATABASE_URL` - SQLite database path (default: `file:./dev.db` - no changes needed!)
 - `JWT_SECRET` - Random secret key for JWT tokens
 - `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASSWORD` - SMTP credentials
 - `APP_URL` - Your application URL
@@ -137,12 +137,14 @@ Edit `.env` and configure:
 # Generate Prisma Client
 npx prisma generate
 
-# Run database migrations
+# Run database migrations (SQLite database created automatically)
 npx prisma migrate dev --name init
 
 # (Optional) View database in browser
 npx prisma studio
 ```
+
+**Note**: The default setup uses SQLite which requires zero configuration. For production, see [SETUP.md](./SETUP.md) for PostgreSQL setup.
 
 For detailed setup instructions, see **[SETUP.md](./SETUP.md)**
 
@@ -235,7 +237,7 @@ pnpm start
 ### Technical Stack
 - **Framework**: Next.js 14 with Pages Router
 - **Language**: TypeScript
-- **Database**: PostgreSQL with Prisma ORM
+- **Database**: SQLite (development) / PostgreSQL (production) with Prisma ORM
 - **Authentication**: JWT tokens with HTTP-only cookies
 - **Password Hashing**: Bcryptjs
 - **Email**: Nodemailer (supports Gmail, SendGrid, Mailgun, AWS SES)
@@ -248,10 +250,11 @@ pnpm start
 
 ### Already Implemented ✅
 - ✅ User authentication and authorization
-- ✅ Database with PostgreSQL and Prisma
+- ✅ Database with SQLite (dev) / PostgreSQL (prod) and Prisma ORM
 - ✅ Email verification system
 - ✅ Password reset functionality
 - ✅ Secure session management
+- ✅ Zero-config development setup with SQLite
 
 ### To Be Implemented
 1. **WebRTC** - For actual video streaming (try libraries like Simple-peer, PeerJS, or Agora)

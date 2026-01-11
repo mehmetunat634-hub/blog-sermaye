@@ -5,8 +5,8 @@ This guide will help you set up the database and email functionality for the Blo
 ## Prerequisites
 
 - Node.js 18+ installed
-- PostgreSQL database (local or hosted)
 - SMTP email service (Gmail, SendGrid, Mailgun, etc.)
+- **Database**: SQLite (included, no setup required) or PostgreSQL (optional, for production)
 
 ## 1. Install Dependencies
 
@@ -16,7 +16,43 @@ npm install
 
 ## 2. Database Setup
 
-### Option A: Local PostgreSQL
+### Option A: SQLite (Default - Recommended for Development)
+
+**No setup required!** SQLite is file-based and requires zero configuration.
+
+The database is already configured in `.env`:
+
+```env
+DATABASE_URL="file:./dev.db"
+```
+
+Just run the migrations and you're done:
+
+```bash
+# Generate Prisma Client
+npx prisma generate
+
+# Run migrations to create tables (creates dev.db automatically)
+npx prisma migrate dev --name init
+
+# (Optional) Open Prisma Studio to view your database
+npx prisma studio
+```
+
+The SQLite database file `dev.db` will be created in the `prisma/` folder automatically.
+
+**Advantages:**
+- ✅ Zero setup - works out of the box
+- ✅ No database server required
+- ✅ Perfect for development and testing
+- ✅ Easy to reset (`rm prisma/dev.db` and re-run migrations)
+- ✅ Portable - just one file
+
+### Option B: PostgreSQL (Recommended for Production)
+
+For production deployments, PostgreSQL is recommended:
+
+#### Local PostgreSQL
 
 1. Install PostgreSQL on your machine
 2. Create a new database:
@@ -31,7 +67,22 @@ CREATE DATABASE blog_sermaye;
 DATABASE_URL="postgresql://username:password@localhost:5432/blog_sermaye?schema=public"
 ```
 
-### Option B: Hosted PostgreSQL (Recommended for Production)
+4. Update `prisma/schema.prisma` datasource:
+
+```prisma
+datasource db {
+  provider = "postgresql"  // Change from "sqlite"
+  url      = env("DATABASE_URL")
+}
+```
+
+5. Run migrations:
+
+```bash
+npx prisma migrate dev
+```
+
+#### Hosted PostgreSQL
 
 Use a hosted PostgreSQL service like:
 - **Supabase** (https://supabase.com) - Free tier available
@@ -39,26 +90,7 @@ Use a hosted PostgreSQL service like:
 - **Neon** (https://neon.tech) - Serverless PostgreSQL
 - **AWS RDS** - For production deployments
 
-Get your connection string from your provider and update `.env`:
-
-```env
-DATABASE_URL="postgresql://user:password@host:5432/database?schema=public"
-```
-
-### Run Database Migrations
-
-After setting up your database:
-
-```bash
-# Generate Prisma Client
-npx prisma generate
-
-# Run migrations to create tables
-npx prisma migrate dev --name init
-
-# (Optional) Open Prisma Studio to view your database
-npx prisma studio
-```
+Get your connection string from your provider, update `.env` and `schema.prisma`, then run migrations.
 
 ## 3. Email Configuration
 
