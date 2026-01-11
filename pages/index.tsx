@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { Heart, Radio, Video, Users, Sparkles, UserCircle2, Wifi, User } from 'lucide-react'
+import { Heart, Radio, Video, Users, Sparkles, UserCircle2, Wifi, User, LogIn, UserPlus } from 'lucide-react'
 import styles from '@/styles/Home.module.css'
 
 interface LiveStream {
@@ -61,6 +61,14 @@ export default function Home() {
           <Link href="/discover">Discover</Link>
           <Link href="/matches">My Matches</Link>
           <Link href="/profile">Profile</Link>
+          <Link href="/login" className={styles.loginBtn}>
+            <LogIn size={16} />
+            <span>Login</span>
+          </Link>
+          <Link href="/register" className={styles.registerBtn}>
+            <UserPlus size={16} />
+            <span>Sign Up</span>
+          </Link>
           <Link href="/go-live" className={styles.goLiveBtn}>
             <Radio size={16} />
             <span>Go Live</span>

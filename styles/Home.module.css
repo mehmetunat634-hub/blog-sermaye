@@ -45,6 +45,34 @@
   color: #0070f3;
 }
 
+.loginBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 25px;
+  font-weight: 600;
+  color: #0070f3 !important;
+  border: 2px solid #0070f3;
+  transition: all 0.3s;
+}
+
+.loginBtn:hover {
+  background: #0070f3;
+  color: white !important;
+}
+
+.registerBtn {
+  background: linear-gradient(135deg, #0070f3 0%, #00a8ff 100%);
+  color: white !important;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .goLiveBtn {
   background: linear-gradient(135deg, #ff0844 0%, #ff5478 100%);
   color: white !important;
