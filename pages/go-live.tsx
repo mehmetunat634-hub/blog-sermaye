@@ -40,7 +40,7 @@ export default function GoLive() {
       </nav>
 
       <main className={styles.main}>
-        <div className={styles.setupCard}>
+        <div className={`${styles.setupCard} animate-scale-in`}>
           <h1>Start Your Live Stream</h1>
           <p className={styles.subtitle}>
             Connect with people in real-time through live video streaming

@@ -82,13 +82,13 @@ export default function Home() {
 
       <main className={styles.main}>
         <section className={styles.hero}>
-          <h1 className={styles.title}>
+          <h1 className={`${styles.title} animate-scale-in`}>
             Meet, Match & Stream <span className={styles.highlight}>Live</span>
           </h1>
-          <p className={styles.description}>
+          <p className={`${styles.description} animate-fade-in-up animate-delay-1`}>
             Connect with people through live video streaming and private video calls when you match
           </p>
-          <div className={styles.ctaButtons}>
+          <div className={`${styles.ctaButtons} animate-fade-in-up animate-delay-2`}>
             <Link href="/go-live" className={styles.secondaryBtn}>
               Go Live Solo
             </Link>
@@ -99,7 +99,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.liveSection}>
+        <section className={`${styles.liveSection} animate-fade-in-up animate-delay-3`}>
           <h2 className={styles.sectionTitle}>
             <Radio size={28} className={styles.liveIcon} />
             <span>Live Now</span>

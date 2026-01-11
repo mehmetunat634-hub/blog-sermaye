@@ -111,7 +111,7 @@ export default function Login() {
       </nav>
 
       <main className={styles.main}>
-        <div className={styles.authCard}>
+        <div className={`${styles.authCard} animate-scale-in`}>
           <div className={styles.authHeader}>
             <div className={styles.iconCircle}>
               <LogIn size={32} />

@@ -61,7 +61,7 @@ export default function Settings() {
       </nav>
 
       <main className={styles.main}>
-        <div className={styles.settingsContainer}>
+        <div className={`${styles.settingsContainer} animate-fade-in-up`}>
           {/* Account Section */}
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>

@@ -63,7 +63,7 @@ export default function VerifyEmail() {
       </nav>
 
       <main className={styles.main}>
-        <div className={styles.authCard}>
+        <div className={`${styles.authCard} animate-scale-in`}>
           {state === 'loading' && (
             <>
               <div className={styles.authHeader}>

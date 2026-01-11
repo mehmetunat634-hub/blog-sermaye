@@ -113,7 +113,7 @@ export default function ResetPassword() {
         </nav>
 
         <main className={styles.main}>
-          <div className={styles.authCard}>
+          <div className={`${styles.authCard} animate-scale-in`}>
             <div className={styles.authHeader}>
               <div
                 className={styles.iconCircle}
@@ -165,7 +165,7 @@ export default function ResetPassword() {
       </nav>
 
       <main className={styles.main}>
-        <div className={styles.authCard}>
+        <div className={`${styles.authCard} animate-scale-in`}>
           <div className={styles.authHeader}>
             <div className={styles.iconCircle}>
               <KeyRound size={32} />
