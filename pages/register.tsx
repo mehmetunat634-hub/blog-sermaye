@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Mail, Lock, User, UserPlus, LogIn, Heart, Calendar } from 'lucide-react'
+import { Mail, Lock, User, UserPlus, LogIn, Heart, Calendar, CheckCircle } from 'lucide-react'
 import styles from '@/styles/Auth.module.css'
 
 export default function Register() {
@@ -24,6 +24,9 @@ export default function Register() {
     gender: '',
     agreeToTerms: ''
   })
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const validateForm = () => {
     const newErrors = {
@@ -94,13 +97,40 @@ export default function Register() {
     return isValid
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (validateForm()) {
-      // Handle registration logic here
-      console.log('Registration attempt:', formData)
-      // For demo purposes, redirect to profile
-      router.push('/profile')
+    setErrorMessage('')
+
+    if (!validateForm()) return
+
+    setLoading(true)
+
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          age: formData.age,
+          gender: formData.gender,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSuccess(true)
+      } else {
+        setErrorMessage(data.message)
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred. Please try again.')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -117,6 +147,51 @@ export default function Register() {
     if (errors[name as keyof typeof errors]) {
       setErrors(prev => ({ ...prev, [name]: '' }))
     }
+  }
+
+  if (success) {
+    return (
+      <div className={styles.container}>
+        <nav className={styles.navbar}>
+          <Link href="/" className={styles.navBrand}>
+            <Heart size={24} fill="currentColor" />
+            <h2>Blog Sermaye</h2>
+          </Link>
+        </nav>
+
+        <main className={styles.main}>
+          <div className={styles.authCard}>
+            <div className={styles.authHeader}>
+              <div className={styles.iconCircle} style={{ background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)' }}>
+                <CheckCircle size={32} />
+              </div>
+              <h1>Registration Successful!</h1>
+              <p className={styles.successMessage}>
+                Check your email to verify your account
+              </p>
+            </div>
+
+            <div className={styles.instructionsBox}>
+              <h3>What&apos;s next?</h3>
+              <ol>
+                <li>Check your email inbox (and spam folder)</li>
+                <li>Click the verification link in the email</li>
+                <li>Your account will be activated</li>
+                <li>Log in and start connecting!</li>
+              </ol>
+            </div>
+
+            <div className={styles.authFooter}>
+              <p>Already verified?</p>
+              <Link href="/login" className={styles.switchLink}>
+                <LogIn size={18} />
+                <span>Sign In</span>
+              </Link>
+            </div>
+          </div>
+        </main>
+      </div>
+    )
   }
 
   return (
@@ -137,6 +212,12 @@ export default function Register() {
             <h1>Create Account</h1>
             <p>Join the community and start connecting</p>
           </div>
+
+          {errorMessage && (
+            <div style={{ background: '#fee', border: '1px solid #fcc', borderRadius: '8px', padding: '12px', marginBottom: '1rem', color: '#c33' }}>
+              {errorMessage}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className={styles.authForm}>
             <div className={styles.formGroup}>
@@ -284,9 +365,9 @@ export default function Register() {
               )}
             </div>
 
-            <button type="submit" className={styles.submitBtn}>
+            <button type="submit" className={styles.submitBtn} disabled={loading}>
               <UserPlus size={20} />
-              <span>Create Account</span>
+              <span>{loading ? 'Creating Account...' : 'Create Account'}</span>
             </button>
           </form>
 

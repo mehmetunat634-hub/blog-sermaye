@@ -12,7 +12,7 @@ export default function ForgotPassword() {
     return /\S+@\S+\.\S+/.test(email)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!email) {
@@ -25,9 +25,25 @@ export default function ForgotPassword() {
       return
     }
 
-    // Handle password reset logic here
-    console.log('Password reset request for:', email)
-    setSubmitted(true)
+    try {
+      const response = await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setError(data.message)
+      }
+    } catch (error) {
+      setError('An error occurred. Please try again.')
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

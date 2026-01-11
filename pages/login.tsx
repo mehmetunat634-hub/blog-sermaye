@@ -15,6 +15,8 @@ export default function Login() {
     email: '',
     password: ''
   })
+  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const validateForm = () => {
     const newErrors = { email: '', password: '' }
@@ -40,13 +42,44 @@ export default function Login() {
     return isValid
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (validateForm()) {
-      // Handle login logic here
-      console.log('Login attempt:', formData)
-      // For demo purposes, redirect to profile
-      router.push('/profile')
+    setErrorMessage('')
+
+    if (!validateForm()) return
+
+    setLoading(true)
+
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        // Check if email is verified
+        if (!data.user.emailVerified) {
+          setErrorMessage('Please verify your email before logging in. Check your inbox for the verification link.')
+          setLoading(false)
+          return
+        }
+        // Redirect to profile
+        router.push('/profile')
+      } else {
+        setErrorMessage(data.message)
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred. Please try again.')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -80,6 +113,12 @@ export default function Login() {
             <h1>Welcome Back</h1>
             <p>Sign in to continue your journey</p>
           </div>
+
+          {errorMessage && (
+            <div style={{ background: '#fee', border: '1px solid #fcc', borderRadius: '8px', padding: '12px', marginBottom: '1rem', color: '#c33' }}>
+              {errorMessage}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className={styles.authForm}>
             <div className={styles.formGroup}>
@@ -135,9 +174,9 @@ export default function Login() {
               </Link>
             </div>
 
-            <button type="submit" className={styles.submitBtn}>
+            <button type="submit" className={styles.submitBtn} disabled={loading}>
               <LogIn size={20} />
-              <span>Sign In</span>
+              <span>{loading ? 'Signing In...' : 'Sign In'}</span>
             </button>
           </form>
 

@@ -4,6 +4,14 @@ A video dating and live streaming platform built with Next.js, React, and TypeSc
 
 ## Features
 
+### 🔐 Authentication & Security
+- **User Registration**: Secure account creation with email verification
+- **Email Verification**: Verify email addresses before account activation
+- **Secure Login**: JWT-based authentication with HTTP-only cookies
+- **Password Reset**: Email-based password recovery system
+- **Password Hashing**: Bcrypt encryption for secure password storage
+- **Session Management**: 7-day session tokens with automatic renewal
+
 ### 🎯 Dating & Matching
 - **Profile Discovery**: Browse and discover potential matches
 - **Smart Matching**: Like/pass system to find connections
@@ -35,24 +43,42 @@ A video dating and live streaming platform built with Next.js, React, and TypeSc
 blog-sermaye/
 ├── pages/
 │   ├── api/
-│   │   └── hello.ts              # API route example
+│   │   ├── auth/
+│   │   │   ├── register.ts           # User registration API
+│   │   │   ├── login.ts              # User login API
+│   │   │   ├── verify-email.ts       # Email verification API
+│   │   │   ├── forgot-password.ts    # Password reset request API
+│   │   │   └── reset-password.ts     # Password reset API
+│   │   └── hello.ts                  # API route example
 │   ├── chat/
-│   │   └── [matchId].tsx         # Text chat with matches
+│   │   └── [matchId].tsx             # Text chat with matches
 │   ├── stream/
-│   │   └── [id].tsx              # Watch live streams
+│   │   └── [id].tsx                  # Watch live streams
 │   ├── video-call/
-│   │   └── [matchId].tsx         # Private video calls
-│   ├── _app.tsx                  # Custom App component
-│   ├── _document.tsx             # Custom Document component
-│   ├── index.tsx                 # Home page with live streams
-│   ├── discover.tsx              # Discover and match with users
-│   ├── matches.tsx               # Your matches
-│   ├── profile.tsx               # User profile
-│   ├── go-live.tsx               # Start live streaming setup
-│   ├── go-live-together.tsx      # Go live together matching opt-in
-│   ├── live-together-matching.tsx # Match confirmation for live together
-│   ├── live-together-stream.tsx  # Live streaming with matched partner
-│   └── streaming.tsx             # Active streaming interface
+│   │   └── [matchId].tsx             # Private video calls
+│   ├── _app.tsx                      # Custom App component
+│   ├── _document.tsx                 # Custom Document component
+│   ├── index.tsx                     # Home page with live streams
+│   ├── login.tsx                     # Login page
+│   ├── register.tsx                  # Registration page
+│   ├── forgot-password.tsx           # Forgot password page
+│   ├── reset-password.tsx            # Reset password page
+│   ├── verify-email.tsx              # Email verification page
+│   ├── discover.tsx                  # Discover and match with users
+│   ├── matches.tsx                   # Your matches
+│   ├── profile.tsx                   # User profile
+│   ├── settings.tsx                  # User settings
+│   ├── go-live.tsx                   # Start live streaming setup
+│   ├── go-live-together.tsx          # Go live together matching opt-in
+│   ├── live-together-matching.tsx    # Match confirmation for live together
+│   ├── live-together-stream.tsx      # Live streaming with matched partner
+│   └── streaming.tsx                 # Active streaming interface
+├── lib/
+│   ├── prisma.ts                     # Prisma client singleton
+│   ├── auth.ts                       # Authentication utilities
+│   └── email.ts                      # Email service utilities
+├── prisma/
+│   └── schema.prisma                 # Database schema
 ├── styles/
 │   ├── globals.css               # Global styles
 │   ├── Home.module.css           # Home page styles
@@ -79,6 +105,8 @@ blog-sermaye/
 
 - Node.js 18.x or higher
 - npm, yarn, or pnpm
+- PostgreSQL database (local or hosted)
+- SMTP email service (Gmail, SendGrid, etc.)
 
 ### Installation
 
@@ -91,20 +119,37 @@ cd blog-sermaye
 2. Install dependencies:
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
 ```
+
+3. Set up environment variables:
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and configure:
+- `DATABASE_URL` - Your PostgreSQL connection string
+- `JWT_SECRET` - Random secret key for JWT tokens
+- `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASSWORD` - SMTP credentials
+- `APP_URL` - Your application URL
+
+4. Set up the database:
+```bash
+# Generate Prisma Client
+npx prisma generate
+
+# Run database migrations
+npx prisma migrate dev --name init
+
+# (Optional) View database in browser
+npx prisma studio
+```
+
+For detailed setup instructions, see **[SETUP.md](./SETUP.md)**
 
 ### Running the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -131,11 +176,19 @@ pnpm start
 
 ## Routes
 
+### Authentication
+- `/register` - Create a new account
+- `/login` - Sign in to your account
+- `/forgot-password` - Request password reset
+- `/reset-password?token=xxx` - Reset your password
+- `/verify-email?token=xxx` - Verify email address
+
 ### Main Pages
 - `/` - Home page with live streams feed
 - `/discover` - Discover and match with users
 - `/matches` - View your matches
 - `/profile` - Your user profile
+- `/settings` - Account and privacy settings
 
 ### Streaming
 - `/go-live` - Setup and start live streaming solo
@@ -150,6 +203,11 @@ pnpm start
 - `/video-call/[matchId]` - Private video call with a match
 
 ### API
+- `/api/auth/register` - User registration
+- `/api/auth/login` - User authentication
+- `/api/auth/verify-email` - Email verification
+- `/api/auth/forgot-password` - Password reset request
+- `/api/auth/reset-password` - Password reset
 - `/api/hello` - API route example
 
 ## Key Concepts
@@ -177,20 +235,32 @@ pnpm start
 ### Technical Stack
 - **Framework**: Next.js 14 with Pages Router
 - **Language**: TypeScript
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: JWT tokens with HTTP-only cookies
+- **Password Hashing**: Bcryptjs
+- **Email**: Nodemailer (supports Gmail, SendGrid, Mailgun, AWS SES)
 - **Styling**: CSS Modules
+- **Icons**: Lucide React
 - **State Management**: React Hooks (useState, useEffect)
 - **Routing**: Dynamic routes for user content
 
 ## Future Enhancements
 
-To implement real functionality, you'll need to integrate:
+### Already Implemented ✅
+- ✅ User authentication and authorization
+- ✅ Database with PostgreSQL and Prisma
+- ✅ Email verification system
+- ✅ Password reset functionality
+- ✅ Secure session management
 
+### To Be Implemented
 1. **WebRTC** - For actual video streaming (try libraries like Simple-peer, PeerJS, or Agora)
-2. **Backend** - User authentication, database, and real-time communication
-3. **Socket.IO** - Real-time chat and notifications
-4. **CDN/Streaming** - Video distribution (Twilio, Agora, Mux, etc.)
-5. **Authentication** - User signup/login system
-6. **Database** - Store user profiles, matches, and preferences
+2. **Socket.IO** - Real-time chat and notifications
+3. **CDN/Streaming** - Video distribution (Twilio, Agora, Mux, etc.)
+4. **File Upload** - Profile pictures and media (AWS S3, Cloudinary)
+5. **Matching Algorithm** - Advanced matching based on preferences
+6. **Push Notifications** - Web push notifications for matches and messages
+7. **Payment Integration** - Premium features (Stripe, PayPal)
 
 ## Learn More
 
