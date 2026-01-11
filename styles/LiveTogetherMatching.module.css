@@ -1,0 +1,177 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.matchInterface {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.searchingScreen, .startingScreen {
+  text-align: center;
+}
+
+.searchingScreen h2, .startingScreen h2 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.searchingScreen p, .startingScreen p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #ff0844;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 2rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.confirmationScreen {
+  text-align: center;
+}
+
+.matchFound h1 {
+  margin: 0 0 2rem 0;
+  color: #333;
+}
+
+.partnerPreview {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.partnerAvatar {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.partnerPreview h2 {
+  margin: 0 0 0.5rem 0;
+}
+
+.partnerPreview p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.finalWarning {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.finalWarning h3 {
+  margin: 0 0 1rem 0;
+  color: #856404;
+}
+
+.finalWarning p {
+  margin: 0.5rem 0;
+  color: #856404;
+  line-height: 1.6;
+}
+
+.finalWarning strong {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.declineBtn, .confirmBtn {
+  flex: 1;
+  padding: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.declineBtn {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.declineBtn:hover {
+  background: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.confirmBtn {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+}
+
+.confirmBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.waitingForPartner {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.waitingForPartner p {
+  margin-top: 1rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.startingScreen {
+  padding: 2rem 0;
+}
+
+.successIcon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .matchInterface {
+    padding: 2rem 1.5rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .partnerPreview {
+    padding: 2rem 1.5rem;
+  }
+
+  .partnerAvatar {
+    font-size: 4rem;
+  }
+}

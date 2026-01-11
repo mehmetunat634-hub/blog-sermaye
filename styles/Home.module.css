@@ -84,7 +84,7 @@
   flex-wrap: wrap;
 }
 
-.primaryBtn, .secondaryBtn {
+.primaryBtn, .secondaryBtn, .liveTogetherBtn {
   padding: 1rem 2.5rem;
   border-radius: 30px;
   font-size: 1.1rem;
@@ -112,6 +112,16 @@
 .secondaryBtn:hover {
   background: #0070f3;
   color: white;
+}
+
+.liveTogetherBtn {
+  background: linear-gradient(135deg, #ff0844 0%, #ff5478 100%);
+  color: white;
+}
+
+.liveTogetherBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 8, 68, 0.3);
 }
 
 .liveSection {

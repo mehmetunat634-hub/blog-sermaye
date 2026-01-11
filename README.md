@@ -17,7 +17,8 @@ A video dating and live streaming platform built with Next.js, React, and TypeSc
 - **Video Controls**: Toggle camera on/off
 
 ### 🔴 Live Streaming
-- **Go Live**: Broadcast publicly to all users
+- **Go Live Solo**: Broadcast publicly to all users
+- **Go Live Together**: Get matched and stream publicly together
 - **Live Chat**: Real-time chat with viewers
 - **Viewer Reactions**: Interactive emoji reactions
 - **Stream Management**: Control settings and end streams
@@ -48,6 +49,9 @@ blog-sermaye/
 │   ├── matches.tsx               # Your matches
 │   ├── profile.tsx               # User profile
 │   ├── go-live.tsx               # Start live streaming setup
+│   ├── go-live-together.tsx      # Go live together matching opt-in
+│   ├── live-together-matching.tsx # Match confirmation for live together
+│   ├── live-together-stream.tsx  # Live streaming with matched partner
 │   └── streaming.tsx             # Active streaming interface
 ├── styles/
 │   ├── globals.css               # Global styles
@@ -59,7 +63,10 @@ blog-sermaye/
 │   ├── Streaming.module.css      # Streaming interface styles
 │   ├── WatchStream.module.css    # Watch stream styles
 │   ├── VideoCall.module.css      # Video call styles
-│   └── Chat.module.css           # Chat styles
+│   ├── Chat.module.css           # Chat styles
+│   ├── GoLiveTogether.module.css # Go live together styles
+│   ├── LiveTogetherMatching.module.css # Matching confirmation styles
+│   └── LiveTogetherStream.module.css   # Live together stream styles
 ├── public/                       # Static assets
 ├── next.config.js                # Next.js configuration
 ├── tsconfig.json                 # TypeScript configuration
@@ -131,9 +138,12 @@ pnpm start
 - `/profile` - Your user profile
 
 ### Streaming
-- `/go-live` - Setup and start live streaming
+- `/go-live` - Setup and start live streaming solo
 - `/streaming` - Active streaming interface (broadcaster view)
 - `/stream/[id]` - Watch a live stream (viewer view)
+- `/go-live-together` - Opt-in to go live together & match
+- `/live-together-matching` - Match confirmation with partner
+- `/live-together-stream` - Live stream together with matched partner
 
 ### Communication
 - `/chat/[matchId]` - Text chat with a match
@@ -148,14 +158,21 @@ pnpm start
 - **No Recording**: Private video calls are real-time only and NOT recorded
 - **Match-Only Calls**: Video calls only available with matched users
 - **Public Streams**: Live streams are public by design
+- **Go Live Together Consent**: Both users must explicitly opt-in BEFORE matching
+- **Double Confirmation**: Both parties confirm before going live together
 - **Community Guidelines**: Clear rules for appropriate behavior
 
 ### User Flow
+
+#### Private Dating Flow
 1. **Create Profile** - Set up your profile with interests
 2. **Discover** - Browse potential matches and like/pass
 3. **Match** - When mutual interest, unlock chat and video calls
-4. **Connect** - Text chat or video call with matches
-5. **Go Live** - Optionally broadcast publicly to meet new people
+4. **Connect** - Text chat or video call privately with matches
+
+#### Public Streaming Flow
+5. **Go Live Solo** - Broadcast publicly by yourself to meet new people
+6. **Go Live Together** - Opt-in to be matched and stream publicly with someone else
 
 ### Technical Stack
 - **Framework**: Next.js 14 with Pages Router

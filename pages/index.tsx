@@ -78,7 +78,10 @@ export default function Home() {
               Start Matching
             </Link>
             <Link href="/go-live" className={styles.secondaryBtn}>
-              Go Live Now
+              Go Live Solo
+            </Link>
+            <Link href="/go-live-together" className={styles.liveTogetherBtn}>
+              🔴 Go Live Together & Match
             </Link>
           </div>
         </section>
@@ -123,13 +126,18 @@ export default function Home() {
             </div>
             <div className={styles.featureCard}>
               <span className={styles.featureIcon}>📹</span>
-              <h3>Video Call</h3>
+              <h3>Private Video Call</h3>
               <p>Have private real-time video calls with matches</p>
             </div>
             <div className={styles.featureCard}>
               <span className={styles.featureIcon}>🔴</span>
-              <h3>Stream Live</h3>
-              <p>Go live publicly and meet new people</p>
+              <h3>Stream Live Solo</h3>
+              <p>Go live publicly by yourself</p>
+            </div>
+            <div className={styles.featureCard}>
+              <span className={styles.featureIcon}>🎭</span>
+              <h3>Go Live Together</h3>
+              <p>Get matched & stream publicly together</p>
             </div>
           </div>
         </section>
