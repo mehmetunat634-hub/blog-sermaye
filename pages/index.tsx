@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import { Heart, Radio, Video, Users, Sparkles, UserCircle2, Wifi, User } from 'lucide-react'
 import styles from '@/styles/Home.module.css'
 
 interface LiveStream {
@@ -53,14 +54,16 @@ export default function Home() {
     <div className={styles.container}>
       <nav className={styles.navbar}>
         <div className={styles.navBrand}>
-          <h2>💝 Blog Sermaye</h2>
+          <Heart size={24} fill="currentColor" />
+          <h2>Blog Sermaye</h2>
         </div>
         <div className={styles.navLinks}>
           <Link href="/discover">Discover</Link>
           <Link href="/matches">My Matches</Link>
           <Link href="/profile">Profile</Link>
           <Link href="/go-live" className={styles.goLiveBtn}>
-            🔴 Go Live
+            <Radio size={16} />
+            <span>Go Live</span>
           </Link>
         </div>
       </nav>
@@ -81,13 +84,17 @@ export default function Home() {
               Go Live Solo
             </Link>
             <Link href="/go-live-together" className={styles.liveTogetherBtn}>
-              🔴 Go Live Together & Match
+              <Radio size={20} />
+              <span>Go Live Together & Match</span>
             </Link>
           </div>
         </section>
 
         <section className={styles.liveSection}>
-          <h2 className={styles.sectionTitle}>🔴 Live Now</h2>
+          <h2 className={styles.sectionTitle}>
+            <Radio size={28} className={styles.liveIcon} />
+            <span>Live Now</span>
+          </h2>
           <div className={styles.streamsGrid}>
             {streams.map((stream) => (
               <Link
@@ -96,15 +103,21 @@ export default function Home() {
                 className={styles.streamCard}
               >
                 <div className={styles.streamThumbnail}>
-                  <span className={styles.thumbnailIcon}>{stream.thumbnail}</span>
+                  <Video size={64} strokeWidth={1.5} />
                   {stream.isLive && (
-                    <span className={styles.liveBadge}>🔴 LIVE</span>
+                    <span className={styles.liveBadge}>
+                      <Radio size={14} />
+                      <span>LIVE</span>
+                    </span>
                   )}
                 </div>
                 <div className={styles.streamInfo}>
                   <h3>{stream.username}</h3>
                   <p className={styles.streamTitle}>{stream.title}</p>
-                  <span className={styles.viewers}>👥 {stream.viewers} watching</span>
+                  <span className={styles.viewers}>
+                    <Users size={16} />
+                    <span>{stream.viewers} watching</span>
+                  </span>
                 </div>
               </Link>
             ))}
@@ -115,27 +128,27 @@ export default function Home() {
           <h2 className={styles.sectionTitle}>How It Works</h2>
           <div className={styles.featuresGrid}>
             <div className={styles.featureCard}>
-              <span className={styles.featureIcon}>👤</span>
+              <UserCircle2 size={48} strokeWidth={1.5} className={styles.featureIcon} />
               <h3>Create Profile</h3>
               <p>Set up your profile and preferences</p>
             </div>
             <div className={styles.featureCard}>
-              <span className={styles.featureIcon}>💫</span>
+              <Sparkles size={48} strokeWidth={1.5} className={styles.featureIcon} />
               <h3>Match & Connect</h3>
               <p>Discover people and match with those you like</p>
             </div>
             <div className={styles.featureCard}>
-              <span className={styles.featureIcon}>📹</span>
+              <Video size={48} strokeWidth={1.5} className={styles.featureIcon} />
               <h3>Private Video Call</h3>
               <p>Have private real-time video calls with matches</p>
             </div>
             <div className={styles.featureCard}>
-              <span className={styles.featureIcon}>🔴</span>
+              <Radio size={48} strokeWidth={1.5} className={styles.featureIcon} />
               <h3>Stream Live Solo</h3>
               <p>Go live publicly by yourself</p>
             </div>
             <div className={styles.featureCard}>
-              <span className={styles.featureIcon}>🎭</span>
+              <Wifi size={48} strokeWidth={1.5} className={styles.featureIcon} />
               <h3>Go Live Together</h3>
               <p>Get matched & stream publicly together</p>
             </div>
