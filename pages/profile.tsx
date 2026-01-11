@@ -41,7 +41,7 @@ export default function Profile() {
       </nav>
 
       <main className={styles.main}>
-        <div className={styles.profileCard}>
+        <div className={`${styles.profileCard} animate-scale-in`}>
           <div className={styles.avatarSection}>
             <div className={styles.avatar}><User size={96} /></div>
             {isEditing && (

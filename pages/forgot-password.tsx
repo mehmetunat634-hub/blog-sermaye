@@ -70,7 +70,7 @@ export default function ForgotPassword() {
         </nav>
 
         <main className={styles.main}>
-          <div className={styles.authCard}>
+          <div className={`${styles.authCard} animate-scale-in`}>
             <div className={styles.authHeader}>
               <div className={styles.iconCircle} style={{ background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)' }}>
                 <CheckCircle size={32} />
@@ -127,7 +127,7 @@ export default function ForgotPassword() {
       </nav>
 
       <main className={styles.main}>
-        <div className={styles.authCard}>
+        <div className={`${styles.authCard} animate-scale-in`}>
           <div className={styles.authHeader}>
             <div className={styles.iconCircle}>
               <KeyRound size={32} />

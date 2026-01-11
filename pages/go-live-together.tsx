@@ -47,7 +47,7 @@ export default function GoLiveTogether() {
       </nav>
 
       <main className={styles.main}>
-        <div className={styles.setupCard}>
+        <div className={`${styles.setupCard} animate-scale-in`}>
           <div className={styles.header}>
             <h1><Radio size={28} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} /> Go Live Together & Match</h1>
             <p className={styles.subtitle}>
