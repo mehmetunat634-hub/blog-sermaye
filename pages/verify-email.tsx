@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { CheckCircle, XCircle, Loader2, Heart } from 'lucide-react'
+import Image from 'next/image'
+import { CheckCircle, XCircle, Loader2 } from 'lucide-react'
 import styles from '@/styles/Auth.module.css'
 
 type VerificationState = 'loading' | 'success' | 'error'
@@ -51,8 +52,13 @@ export default function VerifyEmail() {
     <div className={styles.container}>
       <nav className={styles.navbar}>
         <Link href="/" className={styles.navBrand}>
-          <Heart size={24} fill="currentColor" />
-          <h2>Blog Sermaye</h2>
+          <Image
+            src="/ak-evlilik-logo.svg"
+            alt="AK Evlilik"
+            width={180}
+            height={60}
+            priority
+          />
         </Link>
       </nav>
 

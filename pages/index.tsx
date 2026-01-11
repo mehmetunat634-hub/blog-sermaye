@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { Heart, Radio, Video, Users, Sparkles, UserCircle2, Wifi, User, LogIn, UserPlus } from 'lucide-react'
+import Image from 'next/image'
+import { Radio, Video, Users, Sparkles, UserCircle2, Wifi, User, LogIn, UserPlus } from 'lucide-react'
 import styles from '@/styles/Home.module.css'
 
 interface LiveStream {
@@ -54,8 +55,13 @@ export default function Home() {
     <div className={styles.container}>
       <nav className={styles.navbar}>
         <div className={styles.navBrand}>
-          <Heart size={24} fill="currentColor" />
-          <h2>Blog Sermaye</h2>
+          <Image
+            src="/ak-evlilik-logo.svg"
+            alt="AK Evlilik"
+            width={180}
+            height={60}
+            priority
+          />
         </div>
         <div className={styles.navLinks}>
           <Link href="/discover">Discover</Link>

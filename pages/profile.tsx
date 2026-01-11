@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { User, Save, Pencil, Radio, Settings } from 'lucide-react'
 import styles from '@/styles/Profile.module.css'
 
@@ -17,7 +18,15 @@ export default function Profile() {
   return (
     <div className={styles.container}>
       <nav className={styles.navbar}>
-        <Link href="/">← Back</Link>
+        <Link href="/" className={styles.navBrand}>
+          <Image
+            src="/ak-evlilik-logo.svg"
+            alt="AK Evlilik"
+            width={150}
+            height={50}
+            priority
+          />
+        </Link>
         <h2>My Profile</h2>
         <button
           onClick={() => setIsEditing(!isEditing)}

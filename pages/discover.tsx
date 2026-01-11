@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { User, MapPin, X, Heart } from 'lucide-react'
 import styles from '@/styles/Discover.module.css'
 
@@ -68,7 +69,15 @@ export default function Discover() {
   return (
     <div className={styles.container}>
       <nav className={styles.navbar}>
-        <Link href="/">← Back</Link>
+        <Link href="/" className={styles.navBrand}>
+          <Image
+            src="/ak-evlilik-logo.svg"
+            alt="AK Evlilik"
+            width={150}
+            height={50}
+            priority
+          />
+        </Link>
         <h2>Discover</h2>
         <Link href="/matches">Matches</Link>
       </nav>

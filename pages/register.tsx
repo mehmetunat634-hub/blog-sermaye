@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { Mail, Lock, User, UserPlus, LogIn, Heart, Calendar, CheckCircle } from 'lucide-react'
+import { Mail, Lock, User, UserPlus, LogIn, Calendar, CheckCircle } from 'lucide-react'
 import styles from '@/styles/Auth.module.css'
 
 export default function Register() {
@@ -154,8 +155,13 @@ export default function Register() {
       <div className={styles.container}>
         <nav className={styles.navbar}>
           <Link href="/" className={styles.navBrand}>
-            <Heart size={24} fill="currentColor" />
-            <h2>Blog Sermaye</h2>
+            <Image
+              src="/ak-evlilik-logo.svg"
+              alt="AK Evlilik"
+              width={180}
+              height={60}
+              priority
+            />
           </Link>
         </nav>
 
@@ -198,8 +204,13 @@ export default function Register() {
     <div className={styles.container}>
       <nav className={styles.navbar}>
         <Link href="/" className={styles.navBrand}>
-          <Heart size={24} fill="currentColor" />
-          <h2>Blog Sermaye</h2>
+          <Image
+            src="/ak-evlilik-logo.svg"
+            alt="AK Evlilik"
+            width={180}
+            height={60}
+            priority
+          />
         </Link>
       </nav>
 

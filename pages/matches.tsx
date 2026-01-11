@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { User, MessageCircle, Video, HeartCrack } from 'lucide-react'
 import styles from '@/styles/Matches.module.css'
 
@@ -42,7 +43,15 @@ export default function Matches() {
   return (
     <div className={styles.container}>
       <nav className={styles.navbar}>
-        <Link href="/">← Back</Link>
+        <Link href="/" className={styles.navBrand}>
+          <Image
+            src="/ak-evlilik-logo.svg"
+            alt="AK Evlilik"
+            width={150}
+            height={50}
+            priority
+          />
+        </Link>
         <h2>My Matches</h2>
         <Link href="/discover">Discover</Link>
       </nav>

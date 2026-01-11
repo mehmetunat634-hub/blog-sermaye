@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Radio, AlertTriangle } from 'lucide-react'
 import styles from '@/styles/GoLiveTogether.module.css'
@@ -33,7 +34,15 @@ export default function GoLiveTogether() {
   return (
     <div className={styles.container}>
       <nav className={styles.navbar}>
-        <Link href="/">← Back to Home</Link>
+        <Link href="/" className={styles.navBrand}>
+          <Image
+            src="/ak-evlilik-logo.svg"
+            alt="AK Evlilik"
+            width={150}
+            height={50}
+            priority
+          />
+        </Link>
         <h2>Go Live Together</h2>
       </nav>
 

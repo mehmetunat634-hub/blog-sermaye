@@ -1,0 +1,36 @@
+<svg viewBox="0 0 1300 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Robot Face Character -->
+  <!-- Top arc -->
+  <path d="M 60 80 Q 140 20 220 80" fill="none" stroke="#3F4E5F" stroke-width="28" stroke-linecap="round"/>
+  <path d="M 280 80 Q 360 20 440 80" fill="none" stroke="#3F4E5F" stroke-width="28" stroke-linecap="round"/>
+
+  <!-- Left eye frame -->
+  <circle cx="140" cy="180" r="70" fill="#3F4E5F"/>
+  <circle cx="140" cy="180" r="50" fill="#FFFFFF"/>
+  <circle cx="140" cy="180" r="35" fill="#FFA726"/>
+
+  <!-- Right eye frame -->
+  <circle cx="360" cy="180" r="70" fill="#3F4E5F"/>
+  <circle cx="360" cy="180" r="50" fill="#FFFFFF"/>
+  <circle cx="360" cy="180" r="35" fill="#FFA726"/>
+
+  <!-- Smile -->
+  <path d="M 100 300 Q 250 380 400 300" fill="none" stroke="#3F4E5F" stroke-width="28" stroke-linecap="round"/>
+  <path d="M 110 310 Q 250 380 390 310" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"/>
+  <path d="M 120 315 Q 250 375 380 315" fill="none" stroke="#FFA726" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- AK Letters on rounded rectangles -->
+  <!-- A rounded square -->
+  <rect x="480" y="120" width="180" height="180" rx="50" ry="50" fill="#FFA726"/>
+  <!-- K rounded square -->
+  <rect x="620" y="120" width="180" height="180" rx="50" ry="50" fill="#FFA726"/>
+
+  <!-- A letter -->
+  <text x="570" y="250" font-family="Arial, sans-serif" font-size="140" font-weight="bold" fill="#FFFFFF" text-anchor="middle">A</text>
+
+  <!-- K letter -->
+  <text x="710" y="250" font-family="Arial, sans-serif" font-size="140" font-weight="bold" fill="#FFFFFF" text-anchor="middle">K</text>
+
+  <!-- Evlilik text -->
+  <text x="830" y="250" font-family="Arial, sans-serif" font-size="150" font-weight="600" fill="#3F4E5F">Evlilik</text>
+</svg>

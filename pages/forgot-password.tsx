@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { Mail, ArrowLeft, KeyRound, CheckCircle, Heart } from 'lucide-react'
+import Image from 'next/image'
+import { Mail, ArrowLeft, KeyRound, CheckCircle } from 'lucide-react'
 import styles from '@/styles/Auth.module.css'
 
 export default function ForgotPassword() {
@@ -58,8 +59,13 @@ export default function ForgotPassword() {
       <div className={styles.container}>
         <nav className={styles.navbar}>
           <Link href="/" className={styles.navBrand}>
-            <Heart size={24} fill="currentColor" />
-            <h2>Blog Sermaye</h2>
+            <Image
+              src="/ak-evlilik-logo.svg"
+              alt="AK Evlilik"
+              width={180}
+              height={60}
+              priority
+            />
           </Link>
         </nav>
 
@@ -110,8 +116,13 @@ export default function ForgotPassword() {
     <div className={styles.container}>
       <nav className={styles.navbar}>
         <Link href="/" className={styles.navBrand}>
-          <Heart size={24} fill="currentColor" />
-          <h2>Blog Sermaye</h2>
+          <Image
+            src="/ak-evlilik-logo.svg"
+            alt="AK Evlilik"
+            width={180}
+            height={60}
+            priority
+          />
         </Link>
       </nav>
 

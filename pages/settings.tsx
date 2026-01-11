@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import {
   User,
@@ -46,9 +47,17 @@ export default function Settings() {
   return (
     <div className={styles.container}>
       <nav className={styles.navbar}>
-        <Link href="/profile">← Back to Profile</Link>
+        <Link href="/" className={styles.navBrand}>
+          <Image
+            src="/ak-evlilik-logo.svg"
+            alt="AK Evlilik"
+            width={150}
+            height={50}
+            priority
+          />
+        </Link>
         <h2>Settings</h2>
-        <div></div>
+        <Link href="/profile">Profile</Link>
       </nav>
 
       <main className={styles.main}>
