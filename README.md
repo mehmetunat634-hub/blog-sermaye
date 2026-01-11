@@ -1,16 +1,32 @@
-# Blog Sermaye
+# Blog Sermaye 💝
 
-A Next.js project built with the Pages Router and React, demonstrating file-based routing, dynamic routes, and API routes.
+A video dating and live streaming platform built with Next.js, React, and TypeScript. Connect with people through matches, private video calls, and public live streams.
 
 ## Features
 
-- **Next.js Pages Router**: File-based routing system
-- **React 18**: Modern React with hooks
-- **TypeScript**: Type-safe development
-- **Dynamic Routing**: Blog posts with dynamic routes
-- **API Routes**: Backend API endpoints
-- **CSS Modules**: Scoped styling for components
-- **Responsive Design**: Mobile-friendly layouts
+### 🎯 Dating & Matching
+- **Profile Discovery**: Browse and discover potential matches
+- **Smart Matching**: Like/pass system to find connections
+- **Match Management**: View and manage all your matches
+- **Real-time Chat**: Text messaging with matched users
+
+### 📹 Private Video Calls
+- **Real-time Video**: One-on-one video calls with matches
+- **Privacy First**: Calls are NOT recorded or stored
+- **Audio Controls**: Mute/unmute during calls
+- **Video Controls**: Toggle camera on/off
+
+### 🔴 Live Streaming
+- **Go Live**: Broadcast publicly to all users
+- **Live Chat**: Real-time chat with viewers
+- **Viewer Reactions**: Interactive emoji reactions
+- **Stream Management**: Control settings and end streams
+
+### 🎨 Modern UI/UX
+- **Responsive Design**: Works on desktop, tablet, and mobile
+- **Real-time Updates**: Live viewer counts and chat
+- **Smooth Animations**: Polished user experience
+- **Dark Mode Streaming**: Optimized for video content
 
 ## Project Structure
 
@@ -18,23 +34,36 @@ A Next.js project built with the Pages Router and React, demonstrating file-base
 blog-sermaye/
 ├── pages/
 │   ├── api/
-│   │   └── hello.ts          # API route example
-│   ├── blog/
-│   │   ├── [id].tsx          # Dynamic blog post page
-│   │   └── index.tsx         # Blog listing page
-│   ├── _app.tsx              # Custom App component
-│   ├── _document.tsx         # Custom Document component
-│   ├── about.tsx             # About page
-│   ├── contact.tsx           # Contact page
-│   └── index.tsx             # Home page
+│   │   └── hello.ts              # API route example
+│   ├── chat/
+│   │   └── [matchId].tsx         # Text chat with matches
+│   ├── stream/
+│   │   └── [id].tsx              # Watch live streams
+│   ├── video-call/
+│   │   └── [matchId].tsx         # Private video calls
+│   ├── _app.tsx                  # Custom App component
+│   ├── _document.tsx             # Custom Document component
+│   ├── index.tsx                 # Home page with live streams
+│   ├── discover.tsx              # Discover and match with users
+│   ├── matches.tsx               # Your matches
+│   ├── profile.tsx               # User profile
+│   ├── go-live.tsx               # Start live streaming setup
+│   └── streaming.tsx             # Active streaming interface
 ├── styles/
-│   ├── globals.css           # Global styles
-│   ├── Home.module.css       # Home page styles
-│   └── Page.module.css       # Shared page styles
-├── public/                   # Static assets
-├── next.config.js            # Next.js configuration
-├── tsconfig.json             # TypeScript configuration
-└── package.json              # Dependencies and scripts
+│   ├── globals.css               # Global styles
+│   ├── Home.module.css           # Home page styles
+│   ├── Discover.module.css       # Discovery page styles
+│   ├── Matches.module.css        # Matches page styles
+│   ├── Profile.module.css        # Profile page styles
+│   ├── GoLive.module.css         # Go live setup styles
+│   ├── Streaming.module.css      # Streaming interface styles
+│   ├── WatchStream.module.css    # Watch stream styles
+│   ├── VideoCall.module.css      # Video call styles
+│   └── Chat.module.css           # Chat styles
+├── public/                       # Static assets
+├── next.config.js                # Next.js configuration
+├── tsconfig.json                 # TypeScript configuration
+└── package.json                  # Dependencies and scripts
 ```
 
 ## Getting Started
@@ -95,21 +124,63 @@ pnpm start
 
 ## Routes
 
-- `/` - Home page with navigation links
-- `/about` - About page with project information
-- `/contact` - Contact page
-- `/blog` - Blog listing page
-- `/blog/[id]` - Individual blog post (dynamic route)
-  - Example: `/blog/1`, `/blog/2`, `/blog/3`
-- `/api/hello` - API route returning JSON
+### Main Pages
+- `/` - Home page with live streams feed
+- `/discover` - Discover and match with users
+- `/matches` - View your matches
+- `/profile` - Your user profile
+
+### Streaming
+- `/go-live` - Setup and start live streaming
+- `/streaming` - Active streaming interface (broadcaster view)
+- `/stream/[id]` - Watch a live stream (viewer view)
+
+### Communication
+- `/chat/[matchId]` - Text chat with a match
+- `/video-call/[matchId]` - Private video call with a match
+
+### API
+- `/api/hello` - API route example
+
+## Key Concepts
+
+### Privacy & Security
+- **No Recording**: Private video calls are real-time only and NOT recorded
+- **Match-Only Calls**: Video calls only available with matched users
+- **Public Streams**: Live streams are public by design
+- **Community Guidelines**: Clear rules for appropriate behavior
+
+### User Flow
+1. **Create Profile** - Set up your profile with interests
+2. **Discover** - Browse potential matches and like/pass
+3. **Match** - When mutual interest, unlock chat and video calls
+4. **Connect** - Text chat or video call with matches
+5. **Go Live** - Optionally broadcast publicly to meet new people
+
+### Technical Stack
+- **Framework**: Next.js 14 with Pages Router
+- **Language**: TypeScript
+- **Styling**: CSS Modules
+- **State Management**: React Hooks (useState, useEffect)
+- **Routing**: Dynamic routes for user content
+
+## Future Enhancements
+
+To implement real functionality, you'll need to integrate:
+
+1. **WebRTC** - For actual video streaming (try libraries like Simple-peer, PeerJS, or Agora)
+2. **Backend** - User authentication, database, and real-time communication
+3. **Socket.IO** - Real-time chat and notifications
+4. **CDN/Streaming** - Video distribution (Twilio, Agora, Mux, etc.)
+5. **Authentication** - User signup/login system
+6. **Database** - Store user profiles, matches, and preferences
 
 ## Learn More
 
-To learn more about Next.js and React:
-
 - [Next.js Documentation](https://nextjs.org/docs)
 - [React Documentation](https://react.dev)
-- [Learn Next.js](https://nextjs.org/learn)
+- [WebRTC Guide](https://webrtc.org/getting-started/overview)
+- [Socket.IO Documentation](https://socket.io/docs/)
 
 ## License
 

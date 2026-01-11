@@ -1,0 +1,154 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a, .navbar h2 {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+.navbar a:hover {
+  color: #0070f3;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: calc(100vh - 80px);
+}
+
+.profileCard {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.profileHeader {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+.avatar {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+}
+
+.profileInfo h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.distance {
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+.profileContent {
+  padding: 2rem;
+}
+
+.bioSection, .interestsSection {
+  margin-bottom: 2rem;
+}
+
+.bioSection h3, .interestsSection h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.bioSection p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.interestTag {
+  background: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.passBtn, .likeBtn {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.passBtn {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.passBtn:hover {
+  background: #ffebee;
+  color: #f44336;
+  transform: scale(1.05);
+}
+
+.likeBtn {
+  background: linear-gradient(135deg, #ff0844 0%, #ff5478 100%);
+  color: white;
+}
+
+.likeBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 8, 68, 0.4);
+}
+
+.matchIndicator {
+  text-align: center;
+  margin-top: 1rem;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .profileCard {
+    max-width: 100%;
+  }
+
+  .avatar {
+    font-size: 4rem;
+  }
+
+  .profileInfo h1 {
+    font-size: 1.5rem;
+  }
+}

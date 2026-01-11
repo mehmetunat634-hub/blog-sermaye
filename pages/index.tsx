@@ -1,44 +1,138 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import styles from '@/styles/Home.module.css'
 
+interface LiveStream {
+  id: number
+  username: string
+  title: string
+  viewers: number
+  thumbnail: string
+  isLive: boolean
+}
+
+const mockLiveStreams: LiveStream[] = [
+  {
+    id: 1,
+    username: 'Sarah_M',
+    title: 'Just chatting and meeting new people!',
+    viewers: 234,
+    thumbnail: '🎥',
+    isLive: true
+  },
+  {
+    id: 2,
+    username: 'Mike_J',
+    title: 'Good vibes only - come say hi!',
+    viewers: 189,
+    thumbnail: '🎬',
+    isLive: true
+  },
+  {
+    id: 3,
+    username: 'Emma_K',
+    title: 'Q&A and getting to know you',
+    viewers: 456,
+    thumbnail: '📹',
+    isLive: true
+  },
+  {
+    id: 4,
+    username: 'Alex_R',
+    title: 'Lets connect and chat!',
+    viewers: 312,
+    thumbnail: '🎞️',
+    isLive: true
+  }
+]
+
 export default function Home() {
+  const [streams] = useState<LiveStream[]>(mockLiveStreams)
+
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <span className={styles.highlight}>Blog Sermaye</span>
-        </h1>
-
-        <p className={styles.description}>
-          A Next.js project with page routing
-        </p>
-
-        <div className={styles.grid}>
-          <Link href="/about" className={styles.card}>
-            <h2>About &rarr;</h2>
-            <p>Learn more about this project</p>
-          </Link>
-
-          <Link href="/blog" className={styles.card}>
-            <h2>Blog &rarr;</h2>
-            <p>Read our latest blog posts</p>
-          </Link>
-
-          <Link href="/contact" className={styles.card}>
-            <h2>Contact &rarr;</h2>
-            <p>Get in touch with us</p>
-          </Link>
-
-          <a
-            href="https://nextjs.org/docs"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Documentation &rarr;</h2>
-            <p>Learn about Next.js features</p>
-          </a>
+      <nav className={styles.navbar}>
+        <div className={styles.navBrand}>
+          <h2>💝 Blog Sermaye</h2>
         </div>
+        <div className={styles.navLinks}>
+          <Link href="/discover">Discover</Link>
+          <Link href="/matches">My Matches</Link>
+          <Link href="/profile">Profile</Link>
+          <Link href="/go-live" className={styles.goLiveBtn}>
+            🔴 Go Live
+          </Link>
+        </div>
+      </nav>
+
+      <main className={styles.main}>
+        <section className={styles.hero}>
+          <h1 className={styles.title}>
+            Meet, Match & Stream <span className={styles.highlight}>Live</span>
+          </h1>
+          <p className={styles.description}>
+            Connect with people through live video streaming and private video calls when you match
+          </p>
+          <div className={styles.ctaButtons}>
+            <Link href="/discover" className={styles.primaryBtn}>
+              Start Matching
+            </Link>
+            <Link href="/go-live" className={styles.secondaryBtn}>
+              Go Live Now
+            </Link>
+          </div>
+        </section>
+
+        <section className={styles.liveSection}>
+          <h2 className={styles.sectionTitle}>🔴 Live Now</h2>
+          <div className={styles.streamsGrid}>
+            {streams.map((stream) => (
+              <Link
+                key={stream.id}
+                href={`/stream/${stream.id}`}
+                className={styles.streamCard}
+              >
+                <div className={styles.streamThumbnail}>
+                  <span className={styles.thumbnailIcon}>{stream.thumbnail}</span>
+                  {stream.isLive && (
+                    <span className={styles.liveBadge}>🔴 LIVE</span>
+                  )}
+                </div>
+                <div className={styles.streamInfo}>
+                  <h3>{stream.username}</h3>
+                  <p className={styles.streamTitle}>{stream.title}</p>
+                  <span className={styles.viewers}>👥 {stream.viewers} watching</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.features}>
+          <h2 className={styles.sectionTitle}>How It Works</h2>
+          <div className={styles.featuresGrid}>
+            <div className={styles.featureCard}>
+              <span className={styles.featureIcon}>👤</span>
+              <h3>Create Profile</h3>
+              <p>Set up your profile and preferences</p>
+            </div>
+            <div className={styles.featureCard}>
+              <span className={styles.featureIcon}>💫</span>
+              <h3>Match & Connect</h3>
+              <p>Discover people and match with those you like</p>
+            </div>
+            <div className={styles.featureCard}>
+              <span className={styles.featureIcon}>📹</span>
+              <h3>Video Call</h3>
+              <p>Have private real-time video calls with matches</p>
+            </div>
+            <div className={styles.featureCard}>
+              <span className={styles.featureIcon}>🔴</span>
+              <h3>Stream Live</h3>
+              <p>Go live publicly and meet new people</p>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   )

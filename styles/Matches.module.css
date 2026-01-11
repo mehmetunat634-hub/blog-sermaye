@@ -1,0 +1,167 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a, .navbar h2 {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+.navbar a:hover {
+  color: #0070f3;
+}
+
+.main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.matchesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.matchCard {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.matchCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.matchHeader {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.avatarContainer {
+  position: relative;
+}
+
+.avatar {
+  font-size: 3rem;
+}
+
+.onlineDot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  background: #4caf50;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.matchInfo h3 {
+  margin: 0;
+  color: #333;
+}
+
+.matchTime {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.lastMessage {
+  color: #666;
+  margin: 1rem 0;
+  font-style: italic;
+}
+
+.matchActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.chatBtn, .videoBtn {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 25px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.chatBtn {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.chatBtn:hover {
+  background: #0070f3;
+  color: white;
+}
+
+.videoBtn {
+  background: linear-gradient(135deg, #ff0844 0%, #ff5478 100%);
+  color: white;
+}
+
+.videoBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 8, 68, 0.4);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.emptyIcon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.emptyState h3 {
+  margin: 1rem 0;
+  color: #333;
+}
+
+.emptyState p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.discoverBtn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #0070f3 0%, #00a8ff 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.discoverBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 112, 243, 0.3);
+}
+
+@media (max-width: 768px) {
+  .matchesGrid {
+    grid-template-columns: 1fr;
+  }
+}
