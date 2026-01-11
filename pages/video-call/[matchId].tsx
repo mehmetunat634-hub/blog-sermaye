@@ -40,7 +40,7 @@ export default function VideoCall() {
 
   const handleEndCall = () => {
     if (confirm('Are you sure you want to end this call?')) {
-      router.push('/matches')
+      router.push('/')
     }
   }
 

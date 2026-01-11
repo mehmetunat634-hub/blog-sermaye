@@ -92,9 +92,6 @@ export default function WatchStream() {
                   '+ Follow'
                 )}
               </button>
-              <Link href="/discover" className={styles.matchBtn}>
-                <Heart size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Match
-              </Link>
             </div>
           </div>
 

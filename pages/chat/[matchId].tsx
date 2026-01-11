@@ -56,7 +56,7 @@ export default function Chat() {
     <div className={styles.container}>
       <nav className={styles.navbar}>
         <div className={styles.navLeft}>
-          <Link href="/matches">← Back</Link>
+          <Link href="/">← Back</Link>
         </div>
         <div className={styles.navCenter}>
           <div className={styles.matchInfo}>

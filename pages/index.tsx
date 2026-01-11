@@ -64,8 +64,6 @@ export default function Home() {
           />
         </div>
         <div className={styles.navLinks}>
-          <Link href="/discover">Discover</Link>
-          <Link href="/matches">My Matches</Link>
           <Link href="/profile">Profile</Link>
           <Link href="/login" className={styles.loginBtn}>
             <LogIn size={16} />
@@ -91,9 +89,6 @@ export default function Home() {
             Connect with people through live video streaming and private video calls when you match
           </p>
           <div className={styles.ctaButtons}>
-            <Link href="/discover" className={styles.primaryBtn}>
-              Start Matching
-            </Link>
             <Link href="/go-live" className={styles.secondaryBtn}>
               Go Live Solo
             </Link>
