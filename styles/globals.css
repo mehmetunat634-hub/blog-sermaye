@@ -1,3 +1,35 @@
+:root {
+  /* Turkish & Muslim Color Palette */
+  --color-orange: #FF8C42;
+  --color-orange-light: #FFB366;
+  --color-orange-dark: #E67329;
+
+  --color-blue: #2E5C8A;
+  --color-blue-light: #4A7BA7;
+  --color-blue-dark: #1A3A5C;
+
+  --color-green: #2E7D32;
+  --color-green-light: #4CAF50;
+  --color-green-dark: #1B5E20;
+
+  --color-gold: #D4AF37;
+  --color-gold-light: #E6C35E;
+  --color-gold-dark: #B8941F;
+
+  --color-white: #FFFFFF;
+  --color-off-white: #FAF9F6;
+  --color-light-gray: #F5F5F5;
+
+  --color-text: #2C3E50;
+  --color-text-light: #5A6C7D;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-dark) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--color-blue) 0%, var(--color-blue-dark) 100%);
+  --gradient-islamic: linear-gradient(135deg, var(--color-green) 0%, var(--color-green-dark) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -16,11 +48,12 @@ body {
 }
 
 body {
-  color: #333;
+  color: var(--color-text);
   background: linear-gradient(
     to bottom,
-    #f5f5f5,
-    #e8e8e8
+    var(--color-off-white) 0%,
+    #FFF5E6 50%,
+    var(--color-light-gray) 100%
   );
   min-height: 100vh;
 }

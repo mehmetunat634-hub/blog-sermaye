@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+  background: linear-gradient(to bottom, var(--color-off-white), var(--color-white));
 }
 
 .navbar {
@@ -8,21 +8,22 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: white;
+  background: var(--color-white);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 3px solid var(--color-orange);
 }
 
 .navbar a, .navbar h2 {
   text-decoration: none;
-  color: #333;
+  color: var(--color-text);
   font-weight: 600;
 }
 
 .navbar a:hover {
-  color: #0070f3;
+  color: var(--color-orange);
 }
 
 .main {
@@ -38,10 +39,11 @@
 }
 
 .section {
-  background: white;
+  background: var(--color-white);
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--color-light-gray);
 }
 
 .sectionTitle {
@@ -49,12 +51,12 @@
   align-items: center;
   gap: 0.75rem;
   margin: 0 0 1.5rem 0;
-  color: #333;
+  color: var(--color-text);
   font-size: 1.5rem;
 }
 
 .sectionTitle svg {
-  color: #0070f3;
+  color: var(--color-blue);
 }
 
 .settingsList {
@@ -68,7 +70,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem;
-  background: #f9f9f9;
+  background: var(--color-off-white);
   border-radius: 10px;
   transition: all 0.3s;
   cursor: pointer;
@@ -78,8 +80,8 @@
 }
 
 .settingItem:hover {
-  background: #f0f0f0;
-  border-color: #0070f3;
+  background: var(--color-light-gray);
+  border-color: var(--color-orange);
 }
 
 .settingInfo {
@@ -90,25 +92,25 @@
 }
 
 .settingInfo svg {
-  color: #666;
+  color: var(--color-gold);
   flex-shrink: 0;
 }
 
 .settingInfo h3 {
   margin: 0 0 0.25rem 0;
   font-size: 1rem;
-  color: #333;
+  color: var(--color-text);
   font-weight: 600;
 }
 
 .settingInfo p {
   margin: 0;
   font-size: 0.9rem;
-  color: #999;
+  color: var(--color-text-light);
 }
 
 .settingItem > svg {
-  color: #999;
+  color: var(--color-text-light);
 }
 
 /* Toggle Switch */
@@ -144,13 +146,13 @@
   width: 20px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: var(--color-white);
   transition: 0.4s;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #0070f3;
+  background: var(--gradient-islamic);
 }
 
 input:checked + .slider:before {
@@ -160,20 +162,20 @@ input:checked + .slider:before {
 /* Select Dropdown */
 .select {
   padding: 0.5rem 1rem;
-  border: 2px solid #eee;
+  border: 2px solid var(--color-light-gray);
   border-radius: 8px;
   font-size: 0.9rem;
   font-family: inherit;
-  background: white;
+  background: var(--color-white);
   cursor: pointer;
-  color: #333;
+  color: var(--color-text);
   font-weight: 500;
   transition: border-color 0.3s;
 }
 
 .select:focus {
   outline: none;
-  border-color: #0070f3;
+  border-color: var(--color-orange);
 }
 
 /* Danger Buttons */
